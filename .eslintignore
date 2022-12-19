@@ -1,0 +1,7 @@
+# managed by sku
+*.less.d.ts
+/Users/tlewis/Documents/dist-storybook/
+/Users/tlewis/Documents/dist/
+coverage/
+report/
+# end managed by sku
