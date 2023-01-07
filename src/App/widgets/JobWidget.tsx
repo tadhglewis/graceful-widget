@@ -1,4 +1,3 @@
-import 'braid-design-system/reset';
 import {
   Badge,
   ButtonIcon,
@@ -14,13 +13,13 @@ import {
   Rating,
   Stack,
   Text,
-  BraidProvider,
 } from 'braid-design-system';
-import apac from 'braid-design-system/themes/apac';
 import React from 'react';
 
+import { Widget } from '../Widget';
+
 export default () => (
-  <BraidProvider theme={apac}>
+  <Widget>
     <Card>
       <Stack space="gutter">
         <Columns space="gutter">
@@ -63,5 +62,5 @@ export default () => (
         </Text>
       </Stack>
     </Card>
-  </BraidProvider>
+  </Widget>
 );

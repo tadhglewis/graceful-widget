@@ -13,6 +13,8 @@ import {
 import { AutosuggestValue } from 'braid-design-system/lib/components/Autosuggest/Autosuggest';
 import React, { useState } from 'react';
 
+import { Widget } from '../Widget';
+
 export default () => {
   const [title, setTitle] = useState<AutosuggestValue<unknown>>({
     text: 'Developer',
@@ -25,52 +27,54 @@ export default () => {
   const [description, setDescription] = useState('');
 
   return (
-    <Card>
-      <Stack space="large">
-        <Heading level="3">Add role</Heading>
-        <Stack space="medium">
-          <Autosuggest
-            id="formWidget"
-            label="Job title"
-            suggestions={filterSuggestions([
-              {
-                text: 'Developer',
-              },
-              {
-                text: 'Designer',
-              },
-              {
-                text: 'Product Manager',
-              },
-            ])}
-            value={title}
-            onChange={(e) => setTitle(e)}
-          />
-          <TextField
-            label="Company name"
-            id="company"
-            value={company}
-            onChange={(e) => setCompany(e.currentTarget.value)}
-          />
-          <MonthPicker
-            id="started"
-            label="Started"
-            value={started}
-            onChange={(e) => setStarted(e)}
-          />
-          <Textarea
-            id="description"
-            label="Description"
-            secondaryLabel="recommended"
-            description="Summarise your responsibilities, skills and achievements."
-            value={description}
-            onChange={(e) => setDescription(e.currentTarget.value)}
-          />
-          <Actions>
-            <Button>Save</Button>
-          </Actions>
+    <Widget>
+      <Card>
+        <Stack space="large">
+          <Heading level="3">Add role</Heading>
+          <Stack space="medium">
+            <Autosuggest
+              id="formWidget"
+              label="Job title"
+              suggestions={filterSuggestions([
+                {
+                  text: 'Developer',
+                },
+                {
+                  text: 'Designer',
+                },
+                {
+                  text: 'Product Manager',
+                },
+              ])}
+              value={title}
+              onChange={(e) => setTitle(e)}
+            />
+            <TextField
+              label="Company name"
+              id="company"
+              value={company}
+              onChange={(e) => setCompany(e.currentTarget.value)}
+            />
+            <MonthPicker
+              id="started"
+              label="Started"
+              value={started}
+              onChange={(e) => setStarted(e)}
+            />
+            <Textarea
+              id="description"
+              label="Description"
+              secondaryLabel="recommended"
+              description="Summarise your responsibilities, skills and achievements."
+              value={description}
+              onChange={(e) => setDescription(e.currentTarget.value)}
+            />
+            <Actions>
+              <Button>Save</Button>
+            </Actions>
+          </Stack>
         </Stack>
-      </Stack>
-    </Card>
+      </Card>
+    </Widget>
   );
 };
