@@ -11,12 +11,12 @@ type Config = {
 
 const config: Config = [
   {
-    name: 'JobWidget',
+    name: 'job-widget',
     component: loadable(() => import('./widgets/JobWidget')),
     input: z.object({ positionTitle: z.string() }),
   },
   {
-    name: 'FormWidget',
+    name: 'form-widget',
     component: loadable(() => import('./widgets/FormWidget')),
   },
 ];

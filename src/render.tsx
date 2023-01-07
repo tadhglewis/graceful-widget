@@ -9,24 +9,11 @@ interface RenderContext {
   appHtml: string;
 }
 
-declare global {
-  // eslint-disable-next-line @typescript-eslint/no-namespace
-  namespace JSX {
-    interface IntrinsicElements {
-      'job-widget': React.DetailedHTMLProps<
-        React.HTMLAttributes<HTMLElement>,
-        HTMLElement
-      >; // Normal web component
-    }
-  }
-}
-
 const skuRender: Render<RenderContext> = {
   renderApp: ({ SkuProvider }) => {
     const appHtml = renderToString(
       <SkuProvider>
-        <script src="http://localhost:8080/graceful-widget.js" />
-        <job-widget />
+        {/* <App environment={environment as ClientContext['environment']} /> */}
       </SkuProvider>,
     );
 
@@ -35,28 +22,26 @@ const skuRender: Render<RenderContext> = {
     };
   },
 
-  provideClientContext: ({ environment }) => ({
-    environment,
-  }),
+  // provideClientContext: ({ environment }) => ({
+  //   environment,
+  // }),
 
-  renderDocument: ({ app, bodyTags, headTags }) => {
-    console.log(app);
-
-    return `
+  renderDocument: () => `
   <!DOCTYPE html>
-  <html>
+  <html lang="en">
     <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      ${headTags}
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Test WC</title>
     </head>
     <body>
-      <div id="app">${app.appHtml}</div>
-      ${bodyTags}
+      <h1>Hi!</h1>
+      <script src="http://localhost:8080/graceful-widget.js"></script>
+      <sample-widget></sample-widget>
     </body>
-  </html>
-  `;
-  },
+  </html>  
+  `,
 };
 
 export default skuRender;
