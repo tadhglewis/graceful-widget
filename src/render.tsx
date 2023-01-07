@@ -37,8 +37,8 @@ const skuRender: Render<RenderContext> = {
     </head>
     <body>
       <h1>Hi!</h1>
-      <script src="http://localhost:8080/graceful-widget.js"></script>
-      <sample-widget></sample-widget>
+      <script src="https://graceful-widget.pages.dev/graceful-widget.js"></script>
+      <job-widget></job-widget>
     </body>
   </html>  
   `,
