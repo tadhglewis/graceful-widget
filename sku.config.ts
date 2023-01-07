@@ -6,7 +6,7 @@ const skuConfig: SkuConfig = {
   libraryEntry: 'src/App/Loader.tsx',
   libraryName: 'graceful-widget',
   environments: ['development', 'production'],
-  publicPath: '/', // <-- Required for sku build output
+  publicPath: 'https://graceful-widget.pages.dev/', // <-- Required for sku build output
   orderImports: true,
 };
 
