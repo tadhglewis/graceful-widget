@@ -4,9 +4,9 @@ npm-debug.log
 # managed by sku
 .eslintrc
 .prettierrc
-/Users/tlewis/Documents/dist-storybook/
-/Users/tlewis/Documents/dist/
 coverage/
+dist-storybook/
+dist/
 report/
 tsconfig.json
 # end managed by sku
