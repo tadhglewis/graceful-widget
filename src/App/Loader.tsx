@@ -29,8 +29,7 @@ config.forEach(({ name, component: Component, input }) => {
       constructor() {
         super();
 
-        const mountPoint = document.createElement('div');
-        ReactDOM.render(<Component {...input} />, mountPoint);
+        ReactDOM.render(<Component {...input} />, this);
       }
     },
   );
