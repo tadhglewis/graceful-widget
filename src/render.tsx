@@ -39,6 +39,7 @@ const skuRender: Render<RenderContext> = {
       <h1>Hi!</h1>
       <script src="https://graceful-widget.pages.dev/graceful-widget.js"></script>
       <job-widget></job-widget>
+      <form-widget></form-widget>
     </body>
   </html>  
   `,

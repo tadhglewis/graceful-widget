@@ -22,6 +22,7 @@ const config: Config = [
 ];
 
 config.forEach(({ name, component: Component, input }) => {
+  // Register web components
   customElements.define(
     name,
     class extends HTMLElement {
@@ -29,7 +30,6 @@ config.forEach(({ name, component: Component, input }) => {
         super();
 
         const mountPoint = document.createElement('div');
-        this.attachShadow({ mode: 'open' }).appendChild(mountPoint);
         ReactDOM.render(<Component {...input} />, mountPoint);
       }
     },
