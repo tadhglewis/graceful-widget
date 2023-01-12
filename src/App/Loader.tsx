@@ -1,36 +1,43 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import loadable from 'sku/@loadable/component';
-import { z } from 'zod';
 
 type Config = {
   name: string;
   component: ReturnType<typeof loadable>;
-  input?: Zod.Schema;
 }[];
 
 const config: Config = [
   {
     name: 'job-widget',
-    component: loadable(() => import('./widgets/JobWidget')),
-    input: z.object({ positionTitle: z.string() }),
+    component: loadable(() => import('./widgets/JobWidget'), {
+      resolveComponent: ({ Component }) => Component,
+    }),
   },
-  {
-    name: 'form-widget',
-    component: loadable(() => import('./widgets/FormWidget')),
-  },
+  // {
+  //   name: 'form-widget',
+  //   component: loadable(() => import('./widgets/FormWidget')),
+  // },
 ];
 
-config.forEach(({ name, component: Component, input }) => {
+config.forEach(({ name, component: Component }) => {
   // Register web components
   customElements.define(
     name,
     class extends HTMLElement {
-      constructor() {
-        super();
+      input: unknown;
 
-        ReactDOM.render(<Component {...input} />, this);
+      connectedCallback() {
+        // const mountPoint = document.createElement('span');
+        // this.attachShadow({ mode: 'open' }).appendChild(mountPoint);
+
+        const root = ReactDOM.createRoot(this);
+        root.render(<Component {...(this.input ?? {})} />);
       }
     },
   );
 });
+
+// Alternative render abstraction over react render
+// SEEKWidget.render("widgetName", options)
+// No need to pass node ref as these can be static - do we need the option of passing a ref?

@@ -37,9 +37,17 @@ const skuRender: Render<RenderContext> = {
     </head>
     <body>
       <h1>Hi!</h1>
-      <script src="https://graceful-widget.pages.dev/graceful-widget.js"></script>
-      <job-widget></job-widget>
-      <form-widget></form-widget>
+      <job-widget positionTitle="Software potat"></job-widget>
+      <script>
+        SEEKWidget.render("widgetName", options)
+
+
+        document.querySelector("job-widget").input = {
+          positionTitle: "Software potat",
+          onBookmark: (id) => {console.log(id)}
+        }
+      </script>
+      <script src="http://localhost:8080/graceful-widget.js"></script>
     </body>
   </html>  
   `,
